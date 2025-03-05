@@ -1,5 +1,7 @@
-import unittest
-
+    # Name: Kushal Patel
+    # Date: 5th March 2025
+    # Title: ICE3 (Temperature sensors)
+    # Desc: This is the source code for ICE3
 
 def validate_temp(value: list):
     """Function to validate the input to be within a certain range"""
@@ -13,23 +15,6 @@ def validate_temp(value: list):
         except ValueError:
             raise ValueError("Enter integer values")
     return value
-
-
-# def valid_char(char_value: str):
-#     """Function to validate the input to be Y or N"""
-#     if char_value in "YyNn":
-#         return char_value
-#     else:
-#         raise ValueError("Please enter Y or N")
-#
-#
-# def get_positive_integer(value: int):
-#     """Ensures the user enters a valid non-negative integer"""
-#     if value >= 0:
-#         return value
-#     else:
-#         raise ValueError("Please enter a non-negative number.")
-
 
 def process_temp(validated_list: list):
     """Function to do the final calculations and show required output"""

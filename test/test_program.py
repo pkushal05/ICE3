@@ -1,3 +1,8 @@
+# Name: Kushal Patel
+# Date: 5th March 2025
+# Title: ICE3 (Temperature sensors)
+# Desc: This is the testcases for ICE3
+
 from src.program import validate_temp, process_temp
 import unittest
 
