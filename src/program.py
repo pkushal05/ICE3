@@ -17,7 +17,7 @@ def validate_temp(value: list):
     return value
 
 def process_temp(validated_list: list):
-    """Function to do the final calculations and show required output"""
+    """Function to do the final calculations and show the required output"""
     if not validated_list:
         return "No input provided!"
 
@@ -25,7 +25,4 @@ def process_temp(validated_list: list):
     max_temp = max(validated_list)
     average_temp = round(sum(validated_list) / len(validated_list), 2)
 
-    return f"Min: {int(min_temp)}\u00b0C, Max: {int(max_temp)}\u00b0C, Avg: {average_temp}\u00b0C"
-
-
-
+    return f"Min: {int(min_temp)}°C, Max: {int(max_temp)}°C, Avg: {average_temp}°C"
