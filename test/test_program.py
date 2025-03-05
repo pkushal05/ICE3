@@ -1,24 +1,44 @@
-# test_math_operations.py
-
+from src.program import validate_temp, process_temp
 import unittest
-from src.program import add, subtract, multiply, divide
 
-class TestMathOperations(unittest.TestCase):
+class TestTemperatureFunctions(unittest.TestCase):
 
-    def test_add(self):
-        self.assertEqual(add(5, 3), 8)
-        self.assertEqual(add(-1, 1), 0)
+    def test_validate_temp_min(self):
+        self.assertEqual(validate_temp([-50]), [-50])
 
-    def test_subtract(self):
-        self.assertEqual(subtract(10, 5), 5)
-        self.assertEqual(subtract(0, 0), 0)
+    def test_validate_temp_max(self):
+        self.assertEqual(validate_temp([150]), [150])
 
-    def test_multiply(self):
-        self.assertEqual(multiply(10, 5), 50)
-        self.assertEqual(multiply(-1, 1), -1)
+    def test_validate_temp_near_boundary(self):
+        self.assertEqual(validate_temp([-49, 149]), [-49, 149])
 
-    def test_divide(self):
-        self.assertEqual(divide(5, 0), "Cannot divide by zero")
+    def test_validate_temp_mixed(self):
+        with self.assertRaises(ValueError):
+            validate_temp([20, -60, 160])
+
+    def test_validate_temp_alp_char(self):
+        with self.assertRaises(ValueError):
+            validate_temp([20, "abc", 30])
+
+    def test_validate_temp_invalid_input(self):
+        with self.assertRaises(ValueError):
+            validate_temp([10, "@", -40])
+
+    def test_validate_temp_very_large(self):
+        with self.assertRaises(ValueError):
+            validate_temp([2**31, -1, -2**31])
+
+    def test_validate_temp_all_same(self):
+        self.assertEqual(validate_temp([50, 50, 50]), [50, 50,50])
+
+    def test_validate_empty(self):
+        self.assertEqual(validate_temp([]), "No input provided!")
+
+    def test_process_temp_valid_list(self):
+        self.assertEqual(process_temp([10, 20, 30]), "Min: 10°C, Max: 30°C, Avg: 20.0°C")
+
+    def test_process_temp_empty_list(self):
+        self.assertEqual(process_temp([]), "No input provided!")
+
 if __name__ == '__main__':
     unittest.main()
-# Hello my name is Kushal Patel
